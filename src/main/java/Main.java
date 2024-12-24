@@ -1,5 +1,7 @@
 import BD.BDRepository;
 import models.Student;
+import visualisation.drawer.BarChartDrawer;
+import visualisation.drawer.CityPieChartDrawer;
 
 import java.io.PrintStream;
 import java.nio.charset.Charset;
@@ -16,9 +18,13 @@ public class Main {
 
             List<Student> students = BDRepository.fetchStudents();
 
-            for (Student student : students) {
-                System.out.println(student);
-            }
+//            for (Student student : students) {
+//                System.out.println(student);
+//            }
+
+            CityPieChartDrawer.drawCityPieChart(students);
+            BarChartDrawer.drawBarChart(students);
+
         } finally {
             BDRepository.disconnect();
         }
